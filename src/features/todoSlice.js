@@ -1,4 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import { v4 as uuid } from "uuid";
 
 const todoSlice = createSlice({
   name: "todoList",
@@ -12,7 +13,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const todoObject = {
-        id: new Date().valueOf(),
+        id: uuid(),
         text: action.payload,
         done: false,
       };
