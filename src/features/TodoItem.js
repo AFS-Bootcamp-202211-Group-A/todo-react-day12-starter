@@ -1,15 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeTodo } from "./todoSlice";
+import { doneTodo } from "./todoSlice";
 
 export default function TodoItem(props) {
   const { id, text, done } = props.todo;
   const dispatch = useDispatch();
-  const onRemoveTodo = () => {
-    dispatch(removeTodo(id));
+  const onDoneTodo = () => {
+    dispatch(doneTodo(id));
   };
   return (
     <div
+      onClick={onDoneTodo}
       style={{
         border: "1px solid black",
         width: "30%",
@@ -19,7 +20,7 @@ export default function TodoItem(props) {
       }}
     >
       {text}
-      <button onClick={onRemoveTodo}>x</button>
+      <button>x</button>
     </div>
   );
 }
