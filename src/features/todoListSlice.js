@@ -9,7 +9,7 @@ const todoListSlice = createSlice({
             text: "todo example",
             done: false
         }],
-        currentId: 0,
+        currentId: 1,
     },
     reducers:{
         addTodo:  (state, action) => {
@@ -23,13 +23,14 @@ const todoListSlice = createSlice({
             state.currentId += 1;
         },
         doneTodo: (state, action) => {
-            var foundTodo = state.todos.find(todo => todo.id === action.payload);
-            state.foundTodo.done = !state.foundTodo.done;
+            console.log(action.payload);
+            const foundTodo = state.todos.find(todo => todo.id === action.payload);
+            foundTodo.done = !foundTodo.done;
+            console.log(foundTodo.done);
             
         },
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter(todo => todo.id !== action.payload);
-            
         },
         
 
