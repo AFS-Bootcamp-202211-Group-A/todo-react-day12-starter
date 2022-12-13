@@ -19,11 +19,13 @@ const todoSlice = createSlice({
       state = state.push(todoObject);
     },
     toggleTodo: (state, action) => {
-      const index = action.payload - 1;
+      const id = action.payload;
+      const index = state.findIndex((todo) => todo.id === id);
       state[index].done = !state[index].done;
     },
     removeTodo: (state, action) => {
-      const index = action.payload - 1;
+      const id = action.payload;
+      const index = state.findIndex((todo) => todo.id === id);
       state.splice(index, 1);
     },
   },
