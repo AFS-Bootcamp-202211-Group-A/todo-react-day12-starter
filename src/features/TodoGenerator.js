@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
-import { addTodo } from "./todoSlice";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { addTodo} from "./todoSlice";
 
 export default function TodoGenerator(props) {
   const [todo, setTodo] = useState("");
@@ -9,7 +9,6 @@ export default function TodoGenerator(props) {
     setTodo(event.target.value);
   };
   const onAdd = () => {
-    // props.addTodo(todo);
     dispatch(addTodo(todo));
     setTodo("");
   };
