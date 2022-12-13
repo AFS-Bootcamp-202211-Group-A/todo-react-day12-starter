@@ -9,7 +9,6 @@ export default function TodoGenerator(props) {
     setTodo(event.target.value);
   };
   const onAdd = () => {
-    //props.addTodo();
     dispatch(addTodo(todo));
     setTodo("");
   };

@@ -4,7 +4,11 @@ const todoListSlice = createSlice({
 
     name: "todoList",
     initialState:{
-        todos: [],
+        todos: [{
+            id: 0,
+            text: "todo example",
+            done: false
+        }],
     },
     reducers:{
         addTodo:  (state, action) => {
@@ -17,10 +21,17 @@ const todoListSlice = createSlice({
 
             ]
         },
+        doneTodo: (state, action) => {
+            var foundTodo = state.todos.find(todo => todo.id === action.payload);
+            foundTodo.done = !foundTodo.done;
+            
+        },
+
+
         
 
     },
 })
 
-export const {addTodo} = todoListSlice.actions;
+export const {addTodo, doneTodo} = todoListSlice.actions;
 export default todoListSlice.reducer;
