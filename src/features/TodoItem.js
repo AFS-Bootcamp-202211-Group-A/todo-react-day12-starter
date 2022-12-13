@@ -14,8 +14,8 @@ export default function TodoItem(props) {
   };
 
 
-  return <div className={ props.todo.done ? "Done-todoItem":""} onClick={doneTodoInItem}>
-    {props.todo.text} 
+  return <div>
+    <span className={ props.todo.done ? "Done-todoItem":""} onClick={doneTodoInItem}>{props.todo.text} </span>
     <button onClick={deleteTodoItem}> X </button>
     </div>;
 }
