@@ -9,29 +9,32 @@ const todoListSlice = createSlice({
             text: "todo example",
             done: false
         }],
+        currentId: 0,
     },
     reducers:{
         addTodo:  (state, action) => {
 
             state.todos = [...state.todos, {
-                id: state.todos.length,
+                id: state.currentId,
                 text: action.payload,
                 done: false
-            }
 
-            ]
+            }]
+            state.currentId += 1;
         },
         doneTodo: (state, action) => {
             var foundTodo = state.todos.find(todo => todo.id === action.payload);
-            foundTodo.done = !foundTodo.done;
+            state.foundTodo.done = !state.foundTodo.done;
             
         },
-
-
+        deleteTodo: (state, action) => {
+            state.todos = state.todos.filter(todo => todo.id !== action.payload);
+            
+        },
         
 
     },
 })
 
-export const {addTodo, doneTodo} = todoListSlice.actions;
+export const {addTodo, doneTodo, deleteTodo} = todoListSlice.actions;
 export default todoListSlice.reducer;

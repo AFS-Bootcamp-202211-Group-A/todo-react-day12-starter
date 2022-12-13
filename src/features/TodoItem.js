@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {doneTodo} from "./todoListSlice";
+import {doneTodo, deleteTodo} from "./todoListSlice";
 
 export default function TodoItem(props) {
   const dispatch = useDispatch();
@@ -9,5 +9,13 @@ export default function TodoItem(props) {
     dispatch(doneTodo(props.todo.id));
   };
 
-  return <div className={ props.todo.done ? "Done-todoItem":""} onClick={doneTodoInItem}>{props.todo.text}</div>;
+  const deleteTodoItem = () => {
+    dispatch(deleteTodo(props.todo.id));
+  };
+
+
+  return <div className={ props.todo.done ? "Done-todoItem":""} onClick={doneTodoInItem}>
+    {props.todo.text} 
+    <button onClick={deleteTodoItem}> X </button>
+    </div>;
 }
