@@ -4,17 +4,19 @@ const todoSlice = createSlice({
     name: "todo",
     initialState: {
         todoItems: [],
+        currentID: 0,
     },
     reducers: {
         addTodoItem: (state, action) => {
             state.todoItems = [
                 ...state.todoItems,
                 {
-                    id: state.todoItems.length,
+                    id: state.currentID,
                     text: action.payload,
                     done: false,
                 },
             ];
+            state.currentID += 1;
         },
 
         changeCompleteStatus: (state, action) => {
