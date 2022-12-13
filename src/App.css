@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.todoItem {
+  border: 1px solid black; 
+  width: 30%;
+  margin: auto;
+  text-align: left;
+  padding: 10px;
+}
+.itemBorder {
+  margin: 10px;
+}
