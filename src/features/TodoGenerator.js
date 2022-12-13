@@ -12,7 +12,7 @@ export default function TodoGenerator(props) {
   const onAdd = () => {
     props.addTodo(todo);
     setTodo("");
-    dispatch(addTodoItem({}));
+    dispatch(addTodoItem(todo));
 
   };
   return (
