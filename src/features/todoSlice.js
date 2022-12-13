@@ -3,13 +3,7 @@ import { v4 as uuid } from "uuid";
 
 const todoSlice = createSlice({
   name: "todoList",
-  initialState: [
-    {
-      id: 1,
-      text: "demo",
-      done: false,
-    },
-  ],
+  initialState: [],
   reducers: {
     addTodo: (state, action) => {
       const todoObject = {
