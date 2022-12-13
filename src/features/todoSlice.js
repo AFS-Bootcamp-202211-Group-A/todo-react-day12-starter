@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {v4 as uuid} from 'uuid';
 
 const todoSlice = createSlice({
   name: "todo",
@@ -10,7 +11,7 @@ const todoSlice = createSlice({
       state.todos = [
         ...state.todos,
         {
-          id: state.todos.length + 1,
+          id: uuid(),
           text: action.payload,
           done: false,
         },
@@ -20,8 +21,11 @@ const todoSlice = createSlice({
       const index = state.todos.findIndex((todo) => todo.id == action.payload);
       state.todos[index].done = !state.todos[index].done;
     },
+    deleteItem: (state, action) => {
+        state.todos = state.todos.filter((todo) => todo.id != action.payload);
+    }
   },
 });
 
-export const { addTodo, changeToggle } = todoSlice.actions;
+export const { addTodo, changeToggle, deleteItem } = todoSlice.actions;
 export default todoSlice.reducer;
