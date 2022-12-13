@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addToDo } from "./ToDoSlice";
 
+import uuid from 'react-uuid';
+
 export default function TodoGenerator(props) {
   
   const [todo, setTodo] = useState("");
@@ -12,7 +14,13 @@ export default function TodoGenerator(props) {
 
   const dispatch = useDispatch();
   const onAdd = () => {
-    dispatch(addToDo(todo));
+    dispatch(addToDo(
+      {
+        "id:":uuid(), 
+        "text":todo, 
+        "done": false
+      }
+    ));
     setTodo("");
   };
   return (
@@ -22,3 +30,4 @@ export default function TodoGenerator(props) {
     </div>
   );
 }
+
