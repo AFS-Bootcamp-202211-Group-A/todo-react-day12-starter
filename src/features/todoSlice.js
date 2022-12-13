@@ -16,8 +16,12 @@ const todoSlice = createSlice({
         },
       ];
     },
+    changeToggle: (state, action) => {
+      const index = state.todos.findIndex((todo) => todo.id == action.payload);
+      state.todos[index].done = !state.todos[index].done;
+    },
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, changeToggle } = todoSlice.actions;
 export default todoSlice.reducer;
