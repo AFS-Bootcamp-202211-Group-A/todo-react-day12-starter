@@ -20,8 +20,13 @@ const todoSlice = createSlice({
       };
       state = state.push(todoObject);
     },
+    removeTodo: (state, action) => {
+      const index = action.payload - 1;
+      console.log("removing ", index);
+      state[index].done = true;
+    },
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 export default todoSlice.reducer;
