@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { changeCompleteStatus, deleteItem } from "./TodoSlice.js";
+import './TodoItem.css';
 
 export default function TodoItem(props) {
     var { id, text, done } = props.todo;
@@ -10,13 +11,13 @@ export default function TodoItem(props) {
     };
 
     const onDelete = () => {
-      dispatch(deleteItem(id));
-  };
+        dispatch(deleteItem(id));
+    };
 
     return (
         <div>
             <span
-                style={{ textDecoration: done && "line-through" }}
+                className={done ? "done" : ""}
                 onClick={onChangeCompleteStatus}
             >
                 {text}
