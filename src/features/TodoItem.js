@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { doneTodo, removeTodo } from "./todoSlice";
+import { toggleTodo, removeTodo } from "./todoSlice";
 
 export default function TodoItem(props) {
   const { id, text, done } = props.todo;
   const dispatch = useDispatch();
   const onDoneTodo = () => {
-    dispatch(doneTodo(id));
+    dispatch(toggleTodo(id));
   };
   const onRemoveTodo = () => {
     dispatch(removeTodo(id));
