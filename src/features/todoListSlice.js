@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const todoListSlice = createSlice({
   name: "todoList",
@@ -15,17 +15,19 @@ const todoListSlice = createSlice({
         done: false,
       },
     ],
+    nextId: 3
   },
   reducers: {
     addTodoItem: (state, action) => {
       state.todoItems = [
         ...state.todoItems,
         {
-          id: state.todoItems.length + 1,
+          id: state.nextId,
           text: action.payload,
           done: false,
         },
       ];
+      state.nextId+=1;
     },
     changeTodoStatus: (state, action) => {
       const targetItem = state.todoItems.find(
