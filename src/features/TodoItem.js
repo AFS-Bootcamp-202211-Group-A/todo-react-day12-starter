@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { changeToggle, deleteItem } from "./todoSlice";
+import "./display.css"
 
 export default function TodoItem(props) {
   const [toggle, setToggle] = useState(true);
@@ -22,7 +23,7 @@ export default function TodoItem(props) {
   return (
     <div className="todoItem" >
       <span onClick={handleClick}>{props.todo.text}</span>
-      <button onClick={handleDelete}>X</button>
+      <button className="Xbutton" onClick={handleDelete}>X</button>
     </div>
   );
 }
