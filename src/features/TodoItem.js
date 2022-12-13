@@ -19,8 +19,14 @@ export default function TodoItem(props) {
         textAlign: "left",
       }}
     >
-      {text}
-      <button>x</button>
+      {
+        done?
+        <span style={{textDecoration: 'line-through'
+      }}>{text}</span>:
+      <span>{text}</span>
+      }
+
+      <button onClick={onRemoveTodo}>x</button>
     </div>
   );
 }
