@@ -12,7 +12,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const todoObject = {
-        id: state.length + 1,
+        id: new Date().valueOf(),
         text: action.payload,
         done: false,
       };
