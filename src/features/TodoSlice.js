@@ -19,13 +19,17 @@ const todoSlice = createSlice({
 
         changeCompleteStatus: (state, action) => {
             var foundIndex = state.todoItems.findIndex(
-                (x) => x.id === action.payload
+                (arrItem) => arrItem.id === action.payload
             );
             state.todoItems[foundIndex].done =
                 !state.todoItems[foundIndex].done;
         },
+
+        deleteItem: (state, action) => {
+            state.todoItems = state.todoItems.filter(item => item.id !== action.payload)
+        },
     },
 });
-export const { addTodoItem, changeCompleteStatus } = todoSlice.actions;
+export const { addTodoItem, changeCompleteStatus, deleteItem} = todoSlice.actions;
 
 export default todoSlice.reducer;

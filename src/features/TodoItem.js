@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeCompleteStatus } from "./TodoSlice.js";
+import { changeCompleteStatus, deleteItem } from "./TodoSlice.js";
 
 export default function TodoItem(props) {
     var { id, text, done } = props.todo;
@@ -9,13 +9,19 @@ export default function TodoItem(props) {
         dispatch(changeCompleteStatus(id));
     };
 
+    const onDelete = () => {
+      dispatch(deleteItem(id));
+  };
+
     return (
-        <div
-            style={{ textDecoration: done && "line-through" }}
-            onClick={onChangeCompleteStatus}
-        >
-            {text}
-            <button>x</button>
+        <div>
+            <span
+                style={{ textDecoration: done && "line-through" }}
+                onClick={onChangeCompleteStatus}
+            >
+                {text}
+            </span>
+            <button onClick={onDelete}>x</button>
         </div>
     );
 }
