@@ -6,11 +6,9 @@ export default function TodoGenerator(props) {
   const onInputChange = (event) => {
     setTodo(event.target.value);
   };
-
   const dispatch = useDispatch();
 
   const onAdd = () => {
-    props.addTodo(todo);
     setTodo("");
     dispatch(addTodoItem(todo));
 
