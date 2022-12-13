@@ -1,5 +1,6 @@
 import React from "react";
 
 export default function TodoItem(props) {
-  return <div>{props.todo}</div>;
+  const { todo } = props;
+  return <div>{todo.text}</div>;
 }

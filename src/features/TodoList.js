@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
+import { useSelector } from "react-redux";
 
 export default function TodoList() {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (todo) => {
-    setTodos([...todos, todo]);
-  };
+  const todos = useSelector((state) => state.todoList.todoItems)
 
   return (
     <div>
       <TodoGroup todos={todos} />
-      <TodoGenerator addTodo={addTodo} />
+      <TodoGenerator  />
     </div>
   );
 }

@@ -19,7 +19,7 @@ const todoListSlice = createSlice({
     reducers: {
         addTodoItem: (state, action) => {
             state.todoItems = [
-                ...todoItems, 
+                ...state.todoItems, 
                 {
                     id: state.todoItems.length+1,
                     text: action.payload,
