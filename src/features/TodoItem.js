@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleTodo, removeTodo } from "./todoSlice";
+import "./TodoItem.css";
 
 export default function TodoItem(props) {
   const { id, text, done } = props.todo;
@@ -21,12 +22,8 @@ export default function TodoItem(props) {
         textAlign: "left",
       }}
     >
-      <span onClick={onDoneTodo}>
-        {done ? (
-          <span style={{ textDecoration: "line-through" }}>{text}</span>
-        ) : (
-          <span>{text}</span>
-        )}
+      <span className={done ? "done" : ""} onClick={onDoneTodo}>
+        {text}
       </span>
       <button onClick={onRemoveTodo}>x</button>
     </div>
