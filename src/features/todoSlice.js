@@ -10,7 +10,7 @@ const todoSlice = createSlice({
       state.todos = [
         ...state.todos,
         {
-          id: state.todos.length,
+          id: state.todos.length + 1,
           text: action.payload,
           done: false,
         },
