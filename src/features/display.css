@@ -5,4 +5,8 @@
     text-align: left;
     padding: 10px;
     margin-bottom: 5px;
-  }
+}
+
+.todoDone {
+    text-decoration: line-through;
+}
