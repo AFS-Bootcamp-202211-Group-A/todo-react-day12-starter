@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodoItem } from "./todoListSlice";
 
 export default function TodoGenerator(props) {
   const [todo, setTodo] = useState("");
+  const dispatch = useDispatch();
+
   const onInputChange = (event) => {
     setTodo(event.target.value);
   };
   const onAdd = () => {
-    props.addTodo(todo);
+    dispatch(addTodoItem(todo));
     setTodo("");
   };
   return (
