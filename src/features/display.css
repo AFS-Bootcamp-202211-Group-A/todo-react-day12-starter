@@ -1,0 +1,12 @@
+.todoItem {
+    border: 1px solid black; 
+    width: 30%;
+    margin: auto;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.todoDone {
+    text-decoration: line-through;
+}
