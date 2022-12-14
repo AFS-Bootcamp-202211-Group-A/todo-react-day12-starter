@@ -4,13 +4,17 @@ import { doneToDo,toggleDone } from "./ToDoSlice";
 
 export default function TodoItem(props) {
 
+  const { todo } = props;
   const dispatch = useDispatch();
-  const onClick = ()=>{
-    dispatch(doneToDo(props.todo.id));
-  }
-  const toggleButton = ()=>{
-    dispatch(toggleDone(props.todo.id));
-  }
+
+  const onToggle = () => {
+    dispatch(toggleDone(todo.id));
+  };
+
+  const onDelete = (event) => {
+    event.stopPropagation();
+    dispatch(doneToDo(todo.id));
+  };
 
   const StrikeThroughText = ()=>{
     if (props.todo.done === true){
@@ -39,9 +43,9 @@ export default function TodoItem(props) {
   }
 
   return <div style={todoItemStyle}>
-            <span style={buttonStyle} onClick={toggleButton}> 
-                <StrikeThroughText/>
+            <span style={buttonStyle} onClick={onToggle}> 
+            <StrikeThroughText/>
             </span> 
-            <span style={deleteStyle} onClick={onClick}>x</span>
+            <span style={deleteStyle} onClick={onDelete}>x</span>
          </div> ;
 }

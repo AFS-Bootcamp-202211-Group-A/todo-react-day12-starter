@@ -2,26 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
     name:"todo",
-    initialState:{
-        todoList:[],
-    },
+    initialState:[
+            {
+              id: "cc53dc26-61b0-406b-99dd-b8825dd2ceec",
+              text: "todo example",
+              done: false,
+            },
+            {
+              id: "dd53dc26-b061-6b40-dd99-82b85dd2ce90",
+              text: "first todo item",
+              done: true,
+            },
+          ],
+    
     reducers:{
         addToDo: (state, action)=>{
-            state.todoList.push(action.payload)
+            state.push({ id: Date.now(), ...action.payload });
         },
-        doneToDo: (state,action)=>{
-            state.todoList.splice(action.payload,1)
+        toggleDone: (state, action) => {
+            return state.map((todo) =>
+              todo.id == action.payload ? { ...todo, done: !todo.done } : todo
+            );
+          },
+        doneToDo: (state, action) => {
+            return state.filter((todo) => todo.id != action.payload);
         },
-        toggleDone: (state,action)=>{
-            for (const todoID in state.todoList){
-                const todoItem = state.todoList[todoID]
-                if (todoItem.id=== action.payload){
-                    
-                    todoItem.done = !todoItem.done;
-                }
-
-            }
-        }
         
     }
 })

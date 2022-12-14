@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addToDo } from "./ToDoSlice";
 
-import uuid from 'react-uuid';
-
 export default function TodoGenerator(props) {
   
   const [todo, setTodo] = useState("");
@@ -16,7 +14,7 @@ export default function TodoGenerator(props) {
   const onAdd = () => {
     dispatch(addToDo(
       {
-        "id:":uuid(), 
+        "id:":Date.now(), 
         "text":todo, 
         "done": false
       }
